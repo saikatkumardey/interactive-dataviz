@@ -39,7 +39,7 @@ This app is deployment ready.
 - First time set-up:
 
   ```
-    $ heroku create UNIQUE-APP-NAME # 1\. change my-dash-app to a unique name
+    $ heroku create UNIQUE-APP-NAME # 1\. change UNIQUE-APP-NAME to a name of your liking
     $ git add . # 2\. add all files to git
     $ git commit -m 'Initial app boilerplate' # 3\. commit your changes
     $ git push heroku master # 4\. deploy code to heroku
@@ -60,3 +60,5 @@ This app is deployment ready.
   ```
         $ heroku logs
   ```
+
+References: [Dash Tutorial](https://plot.ly/dash/getting-started)
