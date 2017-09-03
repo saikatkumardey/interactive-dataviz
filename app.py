@@ -4,6 +4,7 @@ import dash_html_components as html
 import plotly.graph_objs as go
 import pandas as pd
 import os
+import sys
 
 df = pd.read_csv("iris.csv")
 df_long = pd.melt(df,id_vars=['species'])
@@ -58,4 +59,10 @@ def update_graph(species_types,column):
     }
 
 if __name__ == '__main__':
-    app.run_server(host="0.0.0.0",port=8050,debug=True)
+
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+    else:
+        port = 80
+
+    app.run_server(host="0.0.0.0",port=port,debug=True)
