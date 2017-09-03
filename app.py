@@ -8,6 +8,7 @@ df = pd.read_csv("iris.csv")
 df_long = pd.melt(df,id_vars=['species'])
 
 app = dash.Dash('')
+server = app.server
 app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 app.layout = html.Div([
