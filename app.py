@@ -17,24 +17,24 @@ app.layout = html.Div([
 
         html.Div([
                 html.H2("Species"),
-                dcc.Checklist(
+                dcc.Dropdown(
                     id='species-type',
                     options=[{'label': i, 'value': i} for i in df_long.species.unique()],
-                    values=['setosa']),
+                    value=['setosa'],
+                    multi=True),
                 html.Hr(),
                 html.H2("Variable"),
-                dcc.RadioItems(id='column',
-                               options=[{'label': i, 'value': i} for i in df_long.variable.unique()],
-                               value='petal_length')
-                ],
-                 style={'width':'48%','display':'inline-block'}),
+                dcc.Dropdown(id='column',
+                             options=[{'label': i, 'value': i} for i in df_long.variable.unique()],
+                             value='petal_length')],
+                 style={'width':'20%','display':'inline-block'}),
 
         html.Div([dcc.Graph(id='graph')],
-                 style={'width':'48%','display':'inline-block','float':'right'})
+                 style={'width':'60%','display':'inline-block','float':'right'})
         ])
 
 @app.callback(dash.dependencies.Output('graph','figure'),
-              [dash.dependencies.Input('species-type','values'),dash.dependencies.Input('column','value')])
+              [dash.dependencies.Input('species-type','value'),dash.dependencies.Input('column','value')])
 def update_graph(species_types,column):
     return {
         'data': [
