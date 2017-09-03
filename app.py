@@ -3,12 +3,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 import pandas as pd
+import os
 
 df = pd.read_csv("iris.csv")
 df_long = pd.melt(df,id_vars=['species'])
 
-app = dash.Dash('')
+app = dash.Dash(__name__)
 server = app.server
+server.secret_key = os.environ.get('SECRET_KEY', 'random')
 app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 app.layout = html.Div([
